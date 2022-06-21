@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookie = require("cookie-parser");
+const fileUpload = require("express-fileupload");
 const passport = require("passport-google-oauth20");
 const { dbConnection } = require("../database/config");
 
@@ -15,6 +16,7 @@ class Server {
       products: "/api/products",
       search: "/api/search",
       users: "/api/users",
+      uploads: "/api/uploads",
     };
 
     // this.app.passport();
@@ -37,6 +39,13 @@ class Server {
     this.app.use(express.json());
     this.app.use(cookie());
     this.app.use(express.static("public"));
+    this.app.use(
+      fileUpload({
+        useTempFiles: true,
+        tempFileDir: "/tmp/",
+        createParentPath: true,
+      })
+    );
   }
 
   routes() {
@@ -45,6 +54,7 @@ class Server {
     this.app.use(this.paths.categories, require("../routes/categories"));
     this.app.use(this.paths.products, require("../routes/products"));
     this.app.use(this.paths.search, require("../routes/search"));
+    this.app.use(this.paths.uploads, require("../routes/uploads"));
     this.app.use(this.paths.users, require("../routes/users"));
   }
   listen() {
