@@ -35,10 +35,19 @@ const checkEmailExist = async (email = "") => {
   }
 };
 
+const validCollections = (collection = "", collections = []) => {
+  const isValidCollection = collectionsnpm.includes(collection);
+  if (!isValidCollection) {
+    throw new Error(`Collection ${collection} not allowed, ${collections}`);
+  }
+  return true;
+};
+
 module.exports = {
   checkEmailExist,
   checkRole,
   existeCategoriaPorId,
   findProductById,
   findUserById,
+  validCollections,
 };
