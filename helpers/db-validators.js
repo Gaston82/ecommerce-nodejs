@@ -36,7 +36,7 @@ const checkEmailExist = async (email = "") => {
 };
 
 const validCollections = (collection = "", collections = []) => {
-  const isValidCollection = collectionsnpm.includes(collection);
+  const isValidCollection = collections.includes(collection);
   if (!isValidCollection) {
     throw new Error(`Collection ${collection} not allowed, ${collections}`);
   }
