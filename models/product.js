@@ -17,6 +17,9 @@ const ProductSchema = Schema({
     type: String,
     required: [true, "Product description is required"],
   },
+  img: {
+    type: String,
+  },
   avaible: {
     type: Boolean,
     default: true,
