@@ -8,7 +8,7 @@ const { dbConnection } = require("../database/config");
 class Server {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT;
+    this.port = process.env.PORT || 4000;
     this.paths = {
       auth: "/api/auth",
       cart: "/api/cart",
@@ -58,7 +58,7 @@ class Server {
     this.app.use(this.paths.users, require("../routes/users"));
   }
   listen() {
-    this.app.listen(process.env.PORT || 4000, () => {
+    this.app.listen(process.env.PORT, () => {
       console.log("Servidor corriendo en puerto", this.port);
     });
   }
