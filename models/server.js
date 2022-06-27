@@ -58,7 +58,7 @@ class Server {
     this.app.use(this.paths.users, require("../routes/users"));
   }
   listen() {
-    this.app.listen(process.env.PORT || 5000, () => {
+    this.app.listen(process.env.PORT || 4000, () => {
       console.log("Servidor corriendo en puerto", this.port);
     });
   }
