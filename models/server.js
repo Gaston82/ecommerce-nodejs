@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const cors = require("cors");
 const cookie = require("cookie-parser");
 const fileUpload = require("express-fileupload");
